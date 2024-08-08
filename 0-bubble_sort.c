@@ -1,4 +1,4 @@
-ç#include <stdio.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "sort.h"
 
@@ -11,32 +11,28 @@
 
 void bubble_sort(int *array, size_t size)
 {
-	int x, aux;
-	size_t i;
+	int aux, band;
+	size_t i, y;
 
-	x = 0;
-
-
-	while (x == 0)
+	for (y = 0; y < size - 1; y++)
 	{
-		x = 1;
+		band = 0;
 
-		for (i = 0; i <= size - 1; i++)
+		for (i = 0; i < size - 1 - y; i++)
 		{
-			printf("%i", array[i]);
-			if (i != (size - 1))
-				printf(", ");
-
-
 			if (array[i] > array[i + 1])
 			{
-				x = 0;
 				aux = array[i];
 				array[i] = array[i + 1];
 				array[i + 1] = aux;
+				band = 1;
+
+				print_array(array, size);
 			}
 		}
 
-		printf("\n");
 	}
+
+	if (!band)
+		return;
 }
